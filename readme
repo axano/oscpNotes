@@ -40,8 +40,8 @@ python -m SimpleHTTPServer 80
 
 USEFULL FRAMEWORKS
 GIT
-nishang
-JAWS  --> enumeration
+nishang --> https://github.com/samratashok/nishang.git
+JAWS  --> enumeration https://github.com/411Hall/JAWS.git
 APT
 gobuster
 mdbtools
