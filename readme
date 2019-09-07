@@ -59,6 +59,7 @@ GIT
 nishang --> https://github.com/samratashok/nishang.git
 JAWS  --> enumeration https://github.com/411Hall/JAWS.git
 impacket --> https://github.com/SecureAuthCorp/impacket.git
+webshells --> https://github.com/BlackArch/webshells.git
 APT
 gobuster
 mdbtools
