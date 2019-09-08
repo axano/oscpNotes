@@ -1,7 +1,7 @@
 # oscpNotes
 
 WEB
-
+davtest
 ENUMERATION
 gobuster dir -u http://10.10.10.98 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
 
