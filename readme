@@ -79,6 +79,7 @@ impacket --> https://github.com/SecureAuthCorp/impacket.git
 webshells --> https://github.com/BlackArch/webshells.git
 sherlock --> https://github.com/rasta-mouse/Sherlock
 empire --> https://github.com/EmpireProject/Empire.git
+unicorn --> https://github.com/trustedsec/unicorn.git
 APT
 gobuster
 mdbtools
