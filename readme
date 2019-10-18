@@ -18,6 +18,8 @@ dnsrecon -d 10.10.10.100 -r 10.0.0.0/8
 
 WINDOWS
 
+# Disable defender real time scan
+Set-MpPreference -DisableRealtimeMonitoring $true
 
 LFI
 https://www.gracefulsecurity.com/path-traversal-cheat-sheet-windows/
