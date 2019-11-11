@@ -12,6 +12,7 @@ john stacy.hash --wordlist=/usr/share/wordlists/rockyou.txt
 
 ENUMERATION
 gobuster dir -u http://10.10.10.98 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+if ports appear wrapped with nmap add -n option
 
 DNS
 dnsrecon -d 10.10.10.100 -r 10.0.0.0/8
