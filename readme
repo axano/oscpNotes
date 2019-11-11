@@ -96,6 +96,7 @@ webshells --> https://github.com/BlackArch/webshells.git
 sherlock --> https://github.com/rasta-mouse/Sherlock
 empire --> https://github.com/EmpireProject/Empire.git
 unicorn --> https://github.com/trustedsec/unicorn.git
+powersploit --> https://github.com/PowerShellMafia/PowerSploit.git
 
 APT
 gobuster
