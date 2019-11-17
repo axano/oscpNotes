@@ -28,6 +28,10 @@ https://www.gracefulsecurity.com/path-traversal-cheat-sheet-windows/
 
 
 SMB
+#anonymous share access
+smbmap -u anonymous -H ip
+# recursive all with depth
+smbmap -u anonymous -H 10.10.10.130 -r --depth 5
 smbmap -u USER -p PASSWORD -d DOMAIN -H ip
 # recursively list share contents
 smbmap -R dirname -H ip
