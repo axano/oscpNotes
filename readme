@@ -20,6 +20,8 @@ dnsrecon -d 10.10.10.100 -r 10.0.0.0/8
 
 WINDOWS
 
+#enumerate folders  in powershell
+gci -recurse . | select fullname
 # Disable defender real time scan
 Set-MpPreference -DisableRealtimeMonitoring $true
 
