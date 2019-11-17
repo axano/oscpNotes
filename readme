@@ -80,6 +80,9 @@ EXFIL FILES CMD/PS
 certutil -encode PATH DESTINATION
 
 PRIVESC WINDOWS 
+#bypass UAC reading
+net use Z: \\127.0.0.1\c$
+
 whoami /priv
 # if SeImpersonatePrivilege is enabled --> juicy/rotten potato
 systeminfo
