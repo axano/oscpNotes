@@ -132,3 +132,6 @@ mdbtools
 seclists
 shellter + dpkg --add-architecture i386 && apt-get update && apt-get install wine32
 
+VARIOUS
+#Decrypt LUKS
+https://www.youtube.com/watch?v=krC5j1Ab44I
