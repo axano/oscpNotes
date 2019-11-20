@@ -109,7 +109,8 @@ LINUX
 
 
 
-
+#Searching for string in files
+grep -Ri password .
 
 USEFULL COMMANDS.ps1
 tcpdump -i tun0 icmp
