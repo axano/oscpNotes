@@ -117,6 +117,8 @@ chmod u+s on dash shell after copying it.
 chown tom:admin /tmp/axano; chmod 6755 /tmp/axano # if group id is also needed
 execute with dash -p
 
+https://gtfobins.github.io/
+
 find / -perm 4000 2> /dev/null
 sudo -l
 #Searching for string in files
