@@ -166,6 +166,7 @@ powershell-suite --> https://github.com/FuzzySecurity/PowerShell-Suite
 linenum --> https://github.com/rebootuser/LinEnum/blob/master/LinEnum.sh
 peas --> https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite
 aclpwn --> https://github.com/fox-it/aclpwn.py
+lazagne --> https://github.com/AlessandroZ/LaZagne
 
 APT
 gobuster
@@ -178,3 +179,4 @@ pip install bloodhound
 VARIOUS
 #Decrypt LUKS
 https://www.youtube.com/watch?v=krC5j1Ab44I
+https://book.hacktricks.xyz
