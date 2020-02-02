@@ -31,10 +31,11 @@ r2
 !mona pattern_create 1024
 !mona pattern_offset 39654138
 # find bad chars
-sprintf = "\x00\x0A"
+sprintf = "\x00\x0A\x0D"
 
 # find gadget
 !mona jmp -r esp -cpb "\x00\x0A"  --> 080416BF, 080414C3  (little endian)
+!mona jmp -r esp 
 
 # create shellcode
 # CALC
