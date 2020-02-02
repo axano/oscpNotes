@@ -26,7 +26,7 @@ r2
   afl #print all functions
   vvv #visualization mode
 
-
+#### https://github.com/justinsteven/dostackbufferoverflowgood/blob/master/dostackbufferoverflowgood_tutorial.pdf
 # find offset
 !mona pattern_create 1024
 !mona pattern_offset 39654138
