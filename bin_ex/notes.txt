@@ -25,3 +25,8 @@ r2
   aaa
   afl #print all functions
   vvv #visualization mode
+
+
+# find offset
+!mona pattern_create 1024
+!mona pattern_offset 39654138
