@@ -1,7 +1,15 @@
 # Scanning
 
+if ports appear wrapped with nmap add -n option
+
+
+# Enumeration
 
 # Exploit
+
+### DNS
+dnsrecon -d 10.10.10.100 -r 10.0.0.0/8
+
 
 # PrivEsc
 ## Linux
@@ -11,26 +19,21 @@
 # Usefull commands
 ## Windows
 
+//enumerate folders  in powershell
+gci -recurse . | select fullname
+
+//Disable defender real time scan
+Set-MpPreference -DisableRealtimeMonitoring $true
+
+
 ## Linux
 
 # Web
+gobuster dir -u http://10.10.10.98 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
 
 ### NFS
 showmount -e 10.10.10.34
 
-ENUMERATION
-gobuster dir -u http://10.10.10.98 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
-if ports appear wrapped with nmap add -n option
-
-DNS
-dnsrecon -d 10.10.10.100 -r 10.0.0.0/8
-
-WINDOWS
-
-#enumerate folders  in powershell
-gci -recurse . | select fullname
-# Disable defender real time scan
-Set-MpPreference -DisableRealtimeMonitoring $true
 
 LFI
 https://www.gracefulsecurity.com/path-traversal-cheat-sheet-windows/
