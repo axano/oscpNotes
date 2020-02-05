@@ -2,10 +2,7 @@
 
 if ports appear wrapped with nmap add -n option
 
-
-# Enumeration
-
-# Exploit
+# Enum/Exploit
 
 ### KERB
 ```
