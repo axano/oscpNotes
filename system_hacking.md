@@ -1,8 +1,21 @@
-# oscpNotes
-https://github.com/21y4d/Windows_BufferOverflowx32
+# Scanning
 
 
-# NFS
+# Exploit
+
+# PrivEsc
+## Linux
+
+## Windows
+
+# Usefull commands
+## Windows
+
+## Linux
+
+# Web
+
+### NFS
 showmount -e 10.10.10.34
 
 ENUMERATION
