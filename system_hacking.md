@@ -8,7 +8,7 @@ if ports appear wrapped with nmap add -n option
 # Exploit
 
 ### DNS
-dnsrecon -d 10.10.10.100 -r 10.0.0.0/8
+```dnsrecon -d 10.10.10.100 -r 10.0.0.0/8```
 
 
 # PrivEsc
@@ -19,10 +19,10 @@ dnsrecon -d 10.10.10.100 -r 10.0.0.0/8
 # Usefull commands
 ## Windows
 
-//enumerate folders  in powershell
+#### enumerate folders  in powershell
 ```gci -recurse . | select fullname```
 
-//Disable defender real time scan
+#### Disable defender real time scan
 ```Set-MpPreference -DisableRealtimeMonitoring $true```
 
 
@@ -30,21 +30,22 @@ dnsrecon -d 10.10.10.100 -r 10.0.0.0/8
 
 # Web
 ```gobuster dir -u http://10.10.10.98 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt```
+#### LFI
+https://www.gracefulsecurity.com/path-traversal-cheat-sheet-windows/
+
 
 ### NFS
 ```showmount -e 10.10.10.34```
 
 
-LFI
-https://www.gracefulsecurity.com/path-traversal-cheat-sheet-windows/
 
 
 ### SMB
 #anonymous share access
 ```smbmap -u anonymous -H ip```
 # recursive all with depth
-```smbmap -u anonymous -H 10.10.10.130 -r --depth 5```
-```smbmap -u USER -p PASSWORD -d DOMAIN -H ip```
+```smbmap -u anonymous -H 10.10.10.130 -r --depth 5
+smbmap -u USER -p PASSWORD -d DOMAIN -H ip```
 # recursively list share contents
 ```smbmap -R dirname -H ip```
 # download file with certain name
