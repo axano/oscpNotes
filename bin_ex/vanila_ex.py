@@ -69,6 +69,7 @@ def main():
 
 def get_bdch():
 	########### BAD CHARS ##############
+	#bdch = [0x00,0x0A,0x0D]
 	bdch = []
 	bdch_test = ""
 	# gen string
