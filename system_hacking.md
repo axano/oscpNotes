@@ -1,11 +1,16 @@
 # Scanning
 
 if ports appear wrapped with nmap add -n option
-# ping sweep
+# Scan
+### ping sweep
 ```
 nmap -sn 10.11.1.0/24 -oA ping+
 cat ping+.nmap | grep up -B 1 | grep for | cut -d " " -f 5  > active.txt
 for i in `cat online.txt`;do mkdir $i;done
+```
+### Scan and find vulns
+```
+nmap -p- -sV -oX new.xml 10.10.10.10; searchsploit --nmap new.xml
 ```
 
 # Password attacks
