@@ -191,6 +191,9 @@ certutil -encode PATH DESTINATION
 ## Linux
 
 ```
+# search for rwx folders
+find /path/to/file -user user1 -perm -u+rwx
+
 # In reverse shell
 $ python -c 'import pty; pty.spawn("/bin/bash")'
 Ctrl-Z
