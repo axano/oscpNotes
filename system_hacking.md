@@ -1,3 +1,12 @@
+# Methodology
+```
+Scan all ports all/Agg/udp
+find EXACT versions including web
+search exploits online incl web
+search exploits in searchsploit incl web
+search how to exploit name_of_service/web
+```
+
 # Scanning
 
 if ports appear wrapped with nmap add -n option
