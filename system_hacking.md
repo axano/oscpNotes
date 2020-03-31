@@ -55,7 +55,9 @@ aclpwn -f svc-alfresco@htb.local -d htb.local --server 10.10.10.161 -du neo4j -d
 ```
 
 ### DNS
-```dnsrecon -d 10.10.10.100 -r 10.0.0.0/8```
+```dnsrecon -d 10.10.10.100 -r 10.0.0.0/8
+dig axfr @10.10.10.123 domain.suffix
+```
 
 ### SMB
 #### anonymous share access
