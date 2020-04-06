@@ -53,6 +53,12 @@ runas /user:domainname\username powershell.exe and sharphound.exe
 # be sure to import bloodhound files into db first
 aclpwn -f svc-alfresco@htb.local -d htb.local --server 10.10.10.161 -du neo4j -dp ******
 ```
+### LDAP
+```
+ldapsearch -h 10.10.10.182 -x -s base namingcontexts
+ldapsearch -h 10.10.10.182 -x -b "DC=cascade,DC=local"
+
+```
 
 ### DNS
 ```dnsrecon -d 10.10.10.100 -r 10.0.0.0/8
