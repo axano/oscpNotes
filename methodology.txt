@@ -3,11 +3,13 @@ nmap -A $ip -oN ggr.txt
 nmap -p- $ip -oN all.txt
 nmap -sU $ip -oN udp.txt
 
+try bruteforcing
 look up the EXACT versions of listening services.
 search versions in exploitdb AND google
 be careful for  exploits that are availabe to a range of versions < >
 if webservers are present search versions of cms and hosted software
 dirbust http as well as https services they may host different software
+
 
 be careful for payload sizes when doing binary exploitation
 try chaining exploits
